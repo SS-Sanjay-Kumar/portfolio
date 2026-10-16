@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanjay Kumar S S | Backend & AI Engineer</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bgDark: '#0a0c10',
+                        surfaceDark: '#12151e',
+                        borderDark: '#1e2433',
+                        textPrimary: '#ffffff',
+                        textSecondary: '#a3b1c6',
+                        textMuted: '#64748b',
+                        accentBlue: '#a5b4fc'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #0a0c10;
+            color: #a3b1c6;
+        }
+
+        /* Highlight styling: text turns white when highlighted */
+        ::selection {
+            background-color: #1e2433;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen bg-bgDark flex flex-col lg:flex-row text-textSecondary antialiased">
+
+    <!-- MOBILE HEADER (Visible on small screens) -->
+    <header
+        class="lg:hidden w-full bg-surfaceDark/80 backdrop-blur border-b border-borderDark p-4 flex items-center justify-between sticky top-0 z-50">
+        <div>
+            <h1 class="text-sm font-bold tracking-tight text-textPrimary">sanjay kumar s s</h1>
+            <p class="text-[10px] text-textMuted font-medium">Backend & AI Engineer</p>
+        </div>
+        <button onclick="toggleMobileMenu()"
+            class="p-2 rounded bg-bgDark border border-borderDark text-textPrimary focus:outline-none">
+            <!-- Unique Terminal/Code Hamburger Icon -->
+            <svg id="menu-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </header>
+
+    <!-- LEFT SIDEBAR (Desktop fixed, Mobile collapsible drawer) -->
+    <aside id="sidebar"
+        class="w-full lg:w-80 p-8 lg:fixed lg:h-screen flex flex-col justify-between border-b lg:border-r border-borderDark bg-surfaceDark/90 lg:bg-surfaceDark/40 hidden lg:flex z-40">
+        <div>
+            <!-- Identity (Hidden on mobile header since header shows it, visible on desktop) -->
+            <div class="hidden lg:block mb-10">
+                <h1 class="text-2xl font-bold tracking-tight text-textPrimary">sanjay kumar s s</h1>
+                <p class="text-xs text-textMuted mt-1 font-medium">Backend & AI Engineer</p>
+                <p class="text-xs text-textMuted mt-0.5">Leeds, United Kingdom</p>
+            </div>
+
+            <!-- Tab Navigation Links -->
+            <nav class="space-y-3 flex flex-col">
+                <button onclick="switchTab('experience')" id="btn-experience"
+                    class="tab-btn text-left text-sm transition-all text-textPrimary font-semibold flex items-center gap-2">
+                    <span class="text-xs text-textMuted">*</span> Experience
+                </button>
+                <button onclick="switchTab('projects')" id="btn-projects"
+                    class="tab-btn text-left text-sm transition-all text-textMuted hover:text-textPrimary flex items-center gap-2">
+                    <span class="text-xs text-textMuted">*</span> Projects
+                </button>
+                <button onclick="switchTab('education')" id="btn-education"
+                    class="tab-btn text-left text-sm transition-all text-textMuted hover:text-textPrimary flex items-center gap-2">
+                    <span class="text-xs text-textMuted">*</span> Education
+                </button>
+                <button onclick="switchTab('achievements')" id="btn-achievements"
+                    class="tab-btn text-left text-sm transition-all text-textMuted hover:text-textPrimary flex items-center gap-2">
+                    <span class="text-xs text-textMuted">*</span> Achievements
+                </button>
+                <button onclick="switchTab('github')" id="btn-github"
+                    class="tab-btn text-left text-sm transition-all text-textMuted hover:text-textPrimary flex items-center gap-2">
+                    <span class="text-xs text-textMuted">*</span> GitHub Activity
+                </button>
+            </nav>
+        </div>
+
+        <!-- Social, Contact & CV Footer -->
+        <div class="pt-6 border-t border-borderDark space-y-2.5 mt-8 lg:mt-0">
+
+            <!-- Email Row -->
+            <div
+                class="group relative flex items-center justify-between bg-bgDark py-2 px-2.5 rounded border border-borderDark text-xs">
+                <div class="flex items-center gap-2 overflow-hidden">
+                    <svg class="w-3.5 h-3.5 text-textMuted shrink-0" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                    <span id="email-text" class="text-textSecondary truncate">contact@sanjaykumar.uk</span>
+                </div>
+                <div
+                    class="absolute inset-0 bg-bgDark px-2.5 rounded flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button onclick="copyToClipboard('contact@sanjaykumar.uk', 'email-text', 'Email')"
+                        class="text-[11px] text-textMuted hover:text-textPrimary transition-colors flex items-center gap-1">
+                        Copy
+                    </button>
+                    <span class="text-borderDark">|</span>
+                    <a href="mailto:contact@sanjaykumar.uk"
+                        class="text-[11px] text-textMuted hover:text-textPrimary transition-colors flex items-center gap-1">
+                        Mail ↗
+                    </a>
+                </div>
+            </div>
+
+            <!-- LinkedIn Row -->
+            <div
+                class="group relative flex items-center justify-between bg-bgDark py-2 px-2.5 rounded border border-borderDark text-xs">
+                <div class="flex items-center gap-2 overflow-hidden">
+                    <svg class="w-3.5 h-3.5 text-textMuted shrink-0 fill-current" viewBox="0 0 24 24">
+                        <path
+                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
+                    <span id="linkedin-text" class="text-textSecondary truncate">linkedin.com/in/sanjay-kumar-ss</span>
+                </div>
+                <div
+                    class="absolute inset-0 bg-bgDark px-2.5 rounded flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button
+                        onclick="copyToClipboard('https://linkedin.com/in/sanjay-kumar-ss', 'linkedin-text', 'LinkedIn')"
+                        class="text-[11px] text-textMuted hover:text-textPrimary transition-colors flex items-center gap-1">
+                        Copy
+                    </button>
+                    <span class="text-borderDark">|</span>
+                    <a href="https://linkedin.com/in/sanjay-kumar-ss" target="_blank"
+                        class="text-[11px] text-textMuted hover:text-textPrimary transition-colors flex items-center gap-1">
+                        Open ↗
+                    </a>
+                </div>
+            </div>
+
+            <!-- GitHub Row -->
+            <div
+                class="group relative flex items-center justify-between bg-bgDark py-2 px-2.5 rounded border border-borderDark text-xs">
+                <div class="flex items-center gap-2 overflow-hidden">
+                    <svg class="w-3.5 h-3.5 text-textMuted shrink-0 fill-current" viewBox="0 0 24 24">
+                        <path
+                            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                    </svg>
+                    <span id="github-text" class="text-textSecondary truncate">github.com/SS-Sanjay-Kumar</span>
+                </div>
+                <div
+                    class="absolute inset-0 bg-bgDark px-2.5 rounded flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button onclick="copyToClipboard('https://github.com/SS-Sanjay-Kumar', 'github-text', 'GitHub')"
+                        class="text-[11px] text-textMuted hover:text-textPrimary transition-colors flex items-center gap-1">
+                        Copy
+                    </button>
+                    <span class="text-borderDark">|</span>
+                    <a href="https://github.com/SS-Sanjay-Kumar" target="_blank"
+                        class="text-[11px] text-textMuted hover:text-textPrimary transition-colors flex items-center gap-1">
+                        Open ↗
+                    </a>
+                </div>
+            </div>
+
+            <!-- Download CV Button -->
+            <div class="pt-1">
+                <a href="Sanjay_Kumar_SS_CV.pdf" download="Sanjay_Kumar_SS_CV.pdf"
+                    class="w-full py-2 px-3 rounded bg-surfaceDark border border-borderDark text-textPrimary text-xs font-semibold flex items-center justify-center gap-2 hover:border-textSecondary transition-all">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    <span>Download CV</span>
+                </a>
+            </div>
+
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-1 lg:ml-80 p-6 lg:p-16 max-w-3xl">
+
+        <!-- TAB 1: EXPERIENCE -->
+        <section id="tab-experience" class="tab-content space-y-10">
+            <div>
+                <h2 class="text-lg font-semibold tracking-wide text-textPrimary">Experience</h2>
+            </div>
+
+            <div class="relative border-l border-borderDark ml-2 pl-6 space-y-12">
+                <!-- Indominus Labs -->
+                <div class="relative group">
+                    <div
+                        class="absolute -left-[31px] top-2 w-2.5 h-2.5 rounded-full border-2 border-borderDark bg-bgDark group-hover:border-textSecondary transition-colors">
+                    </div>
+                    <div class="text-xs text-textPrimary font-bold mb-1.5">
+                        AI Engineer Intern | Nov 2025 – May 2026
+                    </div>
+                    <h3 class="text-xl font-bold text-textPrimary">Indominus Labs</h3>
+                    <p class="text-xs text-textMuted mb-4">Chennai, India</p>
+                    <ul class="space-y-3 text-sm text-textSecondary leading-relaxed list-disc list-inside">
+                        <li>Engineered high-throughput backend microservices and async AI pipelines, maintaining
+                            sub-100ms API response latency across production endpoints.</li>
+                        <li>Developed an AI-powered conversational chatbot leveraging Retrieval-Augmented Generation
+                            (RAG) and Text-to-SQL to process complex medical domain knowledge.</li>
+                        <li>Architected end-to-end CI/CD pipelines and automated deployments to AWS EC2 instances,
+                            reducing manual deployment overhead.</li>
+                    </ul>
+                </div>
+
+                <!-- Cura (Auralis) -->
+                <div class="relative group">
+                    <div
+                        class="absolute -left-[31px] top-2 w-2.5 h-2.5 rounded-full border-2 border-borderDark bg-bgDark group-hover:border-textSecondary transition-colors">
+                    </div>
+                    <div class="text-xs text-textPrimary font-bold mb-1.5">
+                        Full Stack Developer Intern | May 2025 – Sept 2025
+                    </div>
+                    <h3 class="text-xl font-bold text-textPrimary">Cura (Auralis)</h3>
+                    <p class="text-xs text-textMuted mb-4">Remote (Singapore)</p>
+                    <ul class="space-y-3 text-sm text-textSecondary leading-relaxed list-disc list-inside">
+                        <li>Designed and scaled core backend architecture for a fast-paced medical startup, directly
+                            supporting the platform's transition into a successful seed funding round.</li>
+                        <li>Engineered an AI-powered medical chatbot using RAG and vector embeddings to search 10,000+
+                            clinical documents in under 200ms.</li>
+                        <li>Optimized relational database schemas and API query endpoints, slashing p99 latency by 45%
+                            under concurrent traffic loads.</li>
+                    </ul>
+                </div>
+
+                <!-- Pinesphere -->
+                <div class="relative group">
+                    <div
+                        class="absolute -left-[31px] top-2 w-2.5 h-2.5 rounded-full border-2 border-borderDark bg-bgDark group-hover:border-textSecondary transition-colors">
+                    </div>
+                    <div class="text-xs text-textPrimary font-bold mb-1.5">
+                        Full Stack Web Developer Intern | Jan 2024 – Feb 2024
+                    </div>
+                    <h3 class="text-xl font-bold text-textPrimary">Pinesphere</h3>
+                    <p class="text-xs text-textMuted mb-4">Coimbatore, Tamil Nadu, India · Remote</p>
+                    <ul class="space-y-3 text-sm text-textSecondary leading-relaxed list-disc list-inside">
+                        <li>Developed web application prototypes and RESTful services using Python, Django, and modern
+                            web standards.</li>
+                        <li>Designed database schemas, routing modules, and form-handling pipelines adhering to Django
+                            best practices and clean code principles.</li>
+                        <li>Collaborated within an agile team environment to learn production-level software workflows,
+                            version control (Git), and deployment fundamentals.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 2: PROJECTS -->
+        <section id="tab-projects" class="tab-content hidden space-y-10">
+            <div>
+                <h2 class="text-lg font-semibold tracking-wide text-textPrimary">Projects</h2>
+            </div>
+
+            <div class="relative border-l border-borderDark ml-2 pl-6 space-y-12">
+                <!-- Vigilis -->
+                <div class="relative group">
+                    <div
+                        class="absolute -left-[31px] top-2 w-2.5 h-2.5 rounded-full border-2 border-borderDark bg-bgDark group-hover:border-textSecondary transition-colors">
+                    </div>
+                    <div class="text-xs text-textMuted font-mono mb-1.5">
+                        Go / Redis / PyTorch | Security Intelligence
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xl font-bold text-textPrimary">Vigilis</h3>
+                        <a href="https://github.com/SS-Sanjay-Kumar/Vigilis" target="_blank"
+                            class="text-xs text-textMuted hover:text-textPrimary inline-flex items-center gap-1 transition-colors">
+                            <span>View Code</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="text-sm text-textSecondary my-2">An AI-driven, High-Throughput Log Analysis and Security
+                        Intelligence Engine.</p>
+                    <ul class="space-y-3 text-sm text-textSecondary leading-relaxed list-disc list-inside">
+                        <li>Engineered a high-throughput Go and Redis log ingestion engine processing 10,000+ logs/sec
+                            at sub-5ms P95 latency.</li>
+                        <li>Integrated an unsupervised PyTorch deep autoencoder evaluating log sequence embeddings
+                            across 11.1M+ HDFS records.</li>
+                    </ul>
+                </div>
+
+                <!-- Mentis -->
+                <div class="relative group">
+                    <div
+                        class="absolute -left-[31px] top-2 w-2.5 h-2.5 rounded-full border-2 border-borderDark bg-bgDark group-hover:border-textSecondary transition-colors">
+                    </div>
+                    <div class="text-xs text-textMuted font-mono mb-1.5">
+                        Node.js / WebRTC / MongoDB | Real-time Platform
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-xl font-bold text-textPrimary">Mentis</h3>
+                        <a href="https://github.com/SS-Sanjay-Kumar/Mentis" target="_blank"
+                            class="text-xs text-textMuted hover:text-textPrimary inline-flex items-center gap-1 transition-colors">
+                            <span>View Code</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                    <p class="text-sm text-textSecondary my-2">A real-time collaborative coding interview platform with
+                        video calls, live code editor and chat.</p>
+                    <ul class="space-y-3 text-sm text-textSecondary leading-relaxed list-disc list-inside">
+                        <li>Architected real-time collaborative code editor and multi-party video calls using WebRTC and
+                            Stream SDKs.</li>
+                        <li>Engineered low-latency WebSockets and MongoDB change streams to power instantaneous chat and
+                            live state synchronization.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 3: EDUCATION -->
+        <section id="tab-education" class="tab-content hidden space-y-10">
+            <div>
+                <h2 class="text-lg font-semibold tracking-wide text-textPrimary">Education</h2>
+            </div>
+
+            <div class="relative border-l border-borderDark ml-2 pl-6 space-y-12">
+                <!-- University of Leeds -->
+                <div class="relative group">
+                    <div
+                        class="absolute -left-[31px] top-2 w-2.5 h-2.5 rounded-full border-2 border-borderDark bg-bgDark group-hover:border-textSecondary transition-colors">
+                    </div>
+                    <div class="text-xs text-textMuted font-mono mb-1.5">
+                        Postgraduate | 2026 – 2027
+                    </div>
+                    <h3 class="text-xl font-bold text-textPrimary">University of Leeds</h3>
+                    <p class="text-xs text-textMuted mb-3">Master of Science, Advanced Computer Science (Artificial
+                        Intelligence)</p>
+                    <!-- <p class="text-sm text-textSecondary leading-relaxed">Focusing on advanced artificial intelligence,
+                        machine learning systems, and high-performance computation.</p> -->
+                </div>
+
+                <!-- Dr. N.G.P. Institute of Technology -->
+                <div class="relative group">
+                    <div
+                        class="absolute -left-[31px] top-2 w-2.5 h-2.5 rounded-full border-2 border-borderDark bg-bgDark group-hover:border-textSecondary transition-colors">
+                    </div>
+                    <div class="text-xs text-textMuted font-mono mb-1.5">
+                        Undergraduate | 2022 – 2026
+                    </div>
+                    <h3 class="text-xl font-bold text-textPrimary">Dr. N.G.P. Institute of Technology</h3>
+                    <p class="text-xs text-textMuted mb-2">B.E, Computer Science and Engineering</p>
+                    <div
+                        class="inline-block px-2.5 py-1 rounded bg-surfaceDark border border-borderDark text-xs font-mono text-textPrimary mb-3">
+                        Grade: 8.93
+                    </div>
+                    <!-- <p class="text-sm text-textSecondary leading-relaxed mb-2"><strong
+                            class="text-textPrimary">Activities & Societies:</strong> Association President –
+                        Illuminators, Department of Computer Science and Engineering</p>
+                    <p class="text-sm text-textSecondary leading-relaxed"><strong class="text-textPrimary">Core
+                            Focus:</strong> Problem Solving, Data Structures and Algorithms</p> -->
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 4: ACHIEVEMENTS -->
+        <section id="tab-achievements" class="tab-content hidden space-y-10">
+            <div>
+                <h2 class="text-lg font-semibold tracking-wide text-textPrimary">Achievements & Recognition</h2>
+            </div>
+
+            <!-- MODULAR ACHIEVEMENT GRID -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Achievement 1: Department President -->
+                <div class="p-5 rounded-lg bg-surfaceDark border border-borderDark space-y-3">
+                    <div
+                        class="w-full h-56 rounded bg-bgDark border border-borderDark overflow-hidden flex items-center justify-center">
+                        <img src="assets/president_cse_association.jpeg" alt="President CSE Association"
+                            class="w-full h-full object-contain bg-black/40"
+                            onerror="this.replaceWith('[ Upload president_cse_association.jpeg ]')">
+                    </div>
+                    <h3 class="text-base font-bold text-textPrimary">Department Association President</h3>
+                    <p class="text-sm text-textSecondary">Served as President of the CSE Department Association
+                        (Illuminators), leading technical initiatives and peer mentoring.</p>
+                </div>
+
+                <!-- Achievement 2: Hackathon 2nd Runner Up -->
+                <div class="p-5 rounded-lg bg-surfaceDark border border-borderDark space-y-3">
+                    <div
+                        class="w-full h-56 rounded bg-bgDark border border-borderDark overflow-hidden flex items-center justify-center">
+                        <img src="assets/ceg_hackathon.jpeg" alt="CEG Hackathon 2nd Runner Up"
+                            class="w-full h-full object-contain bg-black/40"
+                            onerror="this.replaceWith('[ Upload ceg_hackathon.jpeg ]')">
+                    </div>
+                    <h3 class="text-base font-bold text-textPrimary">Hackathon 2nd Runner-Up</h3>
+                    <p class="text-sm text-textSecondary">Secured 2nd runner-up position in competitive hackathon
+                        testing rapid backend prototyping and system building.</p>
+                </div>
+
+                <!-- Achievement 3: Research Publication (Full Image Viewable via object-contain) -->
+                <div class="p-5 rounded-lg bg-surfaceDark border border-borderDark space-y-3 md:col-span-2">
+                    <div
+                        class="w-full h-72 lg:h-96 rounded bg-bgDark border border-borderDark overflow-hidden flex items-center justify-center">
+                        <img src="assets/energymate_publication.jpeg" alt="Energy Mate Publication"
+                            class="w-full h-full object-contain bg-black/40"
+                            onerror="this.replaceWith('[ Upload energymate_publication.jpeg ]')">
+                    </div>
+                    <h3 class="text-base font-bold text-textPrimary">Research Publication</h3>
+                    <p class="text-sm text-textSecondary">Successfully presented my research paper "EnergyMate:
+                        Real-Time Energy Disaggregation using NILM and Deep Learning for Sustainable Smart Grid
+                        Applications” at the 10th International Conference on Communication and Electronics Systems
+                        (ICCES 2025) hosted by PPG Institute of Technology, Coimbatore. Published research work
+                        detailing energy monitoring frameworks utilizing non-intrusive load monitoring techniques.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 5: GITHUB ACTIVITY (PLACEHOLDER) -->
+        <section id="tab-github" class="tab-content hidden space-y-10">
+            <div>
+                <h2 class="text-lg font-semibold tracking-wide text-textPrimary">GitHub Commit History (under
+                    developement)</h2>
+            </div>
+
+            <!-- Placeholder Box for GitHub Integration -->
+            <div class="p-8 rounded-lg bg-surfaceDark border border-borderDark text-center space-y-4">
+                <div class="flex justify-center text-textMuted">
+                    <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+                        <path
+                            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                    </svg>
+                </div>
+                <p class="text-sm text-textSecondary">GitHub Commit Matrix / Activity Widget Placeholder</p>
+                <div
+                    class="p-3 rounded bg-bgDark border border-borderDark font-mono text-xs text-textMuted inline-block">
+                    &lt;!-- GitHub contribution graph widget will go here --&gt;
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- SCRIPT SECTION -->
+    <script>
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+
+            // Reset tab button states
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('text-textPrimary', 'font-semibold');
+                btn.classList.add('text-textMuted');
+            });
+
+            // Show current tab
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+
+            // Highlight active tab button
+            const activeBtn = document.getElementById('btn-' + tabName);
+            activeBtn.classList.add('text-textPrimary', 'font-semibold');
+            activeBtn.classList.remove('text-textMuted');
+
+            // On mobile, auto-close the drawer after clicking a tab
+            const sidebar = document.getElementById('sidebar');
+            if (window.innerWidth < 1024) {
+                sidebar.classList.add('hidden');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('hidden');
+        }
+
+        function copyToClipboard(textToCopy, elementId, labelName) {
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const el = document.getElementById(elementId);
+                const originalText = el.innerText;
+                el.innerText = labelName + " Copied!";
+                el.style.color = "#ffffff";
+
+                setTimeout(() => {
+                    el.innerText = originalText;
+                    el.style.color = "";
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+
+</html>
