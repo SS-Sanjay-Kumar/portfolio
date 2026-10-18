@@ -149,10 +149,10 @@
                     class="tab-btn text-left text-sm transition-all text-textMuted hover:text-textPrimary flex items-center gap-2">
                     <span class="text-xs text-textMuted">*</span> Achievements
                 </button>
-                <button onclick="switchTab('github')" id="btn-github"
+                <!-- <button onclick="switchTab('github')" id="btn-github"
                     class="tab-btn text-left text-sm transition-all text-textMuted hover:text-textPrimary flex items-center gap-2">
                     <span class="text-xs text-textMuted">*</span> GitHub Activity
-                </button>
+                </button> -->
             </nav>
         </div>
 
@@ -339,7 +339,7 @@
                         <h3 class="text-xl font-bold text-textPrimary">Vigilis</h3>
                         <a href="https://github.com/SS-Sanjay-Kumar/Vigilis" target="_blank"
                             class="text-xs text-textMuted hover:text-textPrimary inline-flex items-center gap-1 transition-colors">
-                            <span class="text-xl font-bold text-textPrimary">View Code</span>
+                            <span>View Code</span>
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
@@ -405,8 +405,9 @@
                         Postgraduate | 2026 – 2027
                     </div>
                     <h3 class="text-xl font-bold text-textPrimary">University of Leeds</h3>
-                    <p class="text-xs text-textMuted mb-3">Master of Science, Advanced Computer Science (Artificial
+                    <p class="text-xs text-textMuted mb-2">Master of Science, Advanced Computer Science (Artificial
                         Intelligence)</p>
+                    <p class="text-xs text-textMuted mb-2">Leeds, United Kingdom</p>
                 </div>
 
                 <!-- Dr. N.G.P. Institute of Technology -->
@@ -419,6 +420,7 @@
                     </div>
                     <h3 class="text-xl font-bold text-textPrimary">Dr. N.G.P. Institute of Technology</h3>
                     <p class="text-xs text-textMuted mb-2">B.E, Computer Science and Engineering</p>
+                    <p class="text-xs text-textMuted mb-2">TamilNadu, India</p>
                     <div
                         class="inline-block px-2.5 py-1 rounded bg-surfaceDark border border-borderDark text-xs font-mono text-textPrimary mb-3">
                         Grade: 8.93
@@ -480,27 +482,25 @@
         </section>
 
         <!-- TAB 5: GITHUB ACTIVITY (PLACEHOLDER) -->
-        <section id="tab-github" class="tab-content hidden space-y-10">
+        <!-- <section id="tab-github" class="tab-content hidden space-y-10">
             <div>
                 <h2 class="text-lg font-semibold tracking-wide text-textPrimary">GitHub Commit History (under
                     development)</h2>
             </div>
 
-            <!-- Placeholder Box for GitHub Integration -->
-            <div class="p-8 rounded-lg bg-surfaceDark border border-borderDark text-center space-y-4">
-                <div class="flex justify-center text-textMuted">
-                    <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
-                        <path
-                            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-                    </svg>
-                </div>
-                <p class="text-sm text-textSecondary">GitHub Commit Matrix / Activity Widget Placeholder</p>
-                <div
-                    class="p-3 rounded bg-bgDark border border-borderDark font-mono text-xs text-textMuted inline-block">
-                    &lt;!-- GitHub contribution graph widget will go here --&gt;
-                </div>
+        <div class="p-8 rounded-lg bg-surfaceDark border border-borderDark text-center space-y-4">
+            <div class="flex justify-center text-textMuted">
+                <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+                    <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+                </svg>
             </div>
-        </section>
+            <p class="text-sm text-textSecondary">GitHub Commit Matrix / Activity Widget Placeholder</p>
+            <div class="p-3 rounded bg-bgDark border border-borderDark font-mono text-xs text-textMuted inline-block">
+                &lt;!-- GitHub contribution graph widget will go here --&gt;
+            </div>
+        </div>
+        </section>  -->
 
     </main>
 
